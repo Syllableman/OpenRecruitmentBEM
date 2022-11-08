@@ -48,7 +48,9 @@
 </nav>
 <!-- Ini Akhir Bagian Navbar -->
 
-<!-- Masukkin tampilan lain mulai dari sini! -->	
-
+<!-- Masukkin tampilan lain mulai dari sini! -->
+<a href="register_mhs.php">
+  <button class="btn btn-success">Daftar</button>
+</a>	
 </body>
 </html>
