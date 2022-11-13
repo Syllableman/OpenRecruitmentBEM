@@ -90,6 +90,7 @@ if (isset($_POST["submit"])) {
                                     <option value="budidaya tanaman pangan">Budidaya Tanaman Pangan</option>
                                     <option value="budidaya tanaman perkebunan">Budidaya Tanaman Perkebunan</option>
                                     <option value="peternakan">Peternakan</option>
+                                    <option value="peternakan">Teknologi Pertanian</option>
                                     <option selected>--Pilih Jurusan--</option>
                                 </select>
                                		<label for="jurusan">Jurusan</label> 
@@ -152,10 +153,9 @@ if (isset($_POST["submit"])) {
                                 	 <div id="btp">
                                 		<div class="form-floating">
                                 	 	<select id="budidaya tanaman perkebunan" name="prodi" class="form-select" aria-label="Floating label select example">
-                                        <option value="1">18-20</option>
-                                        <option value="2">20-25</option>
-                                        <option value="3">25-28</option>
-                                        <option value="4">28+</option>
+                                        <option value="1">Kopi</option>
+                                        <option value="2">D4</option>
+                                        <option value="3">D3</option>
                                     </select>
                                     <label for="budidaya tanaman perkebunan">Program Studi</label>
                                 	</div>
