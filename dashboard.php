@@ -39,9 +39,12 @@
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+
+      <form action="" method="post">
+
+        <input type="text" name="keywoard" size="20" autofocus placeholder="Cari Disini..." autocomplete="off" >
+        <button type="submit" name="cari">Search</button>
+
       </form>
     </div>
   </div>
@@ -51,6 +54,65 @@
 <!-- Masukkin tampilan lain mulai dari sini! -->
 <a href="register_mhs.php">
   <button class="btn btn-success">Daftar</button>
-</a>	
+</a>
+<?php
+require 'functions.php';
+
+$pendaftar = query("SELECT * FROM tb_pendaftar");
+
+//CARI
+if (isset($_POST["cari"]) ){
+  $pendaftar = cari($_POST["keywoard"]);
+}
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Halaman Data Pendaftar</title>
+</head>
+<body>
+  <h1 align="center">DATA MAHASISWA</h1>
+  <table border=2 cellpadding=3 class="table table-striped-columns">
+    <tr style="text-align:center;">
+      <th>No.</th>
+      <th>NPM</th>
+      <th>Nama</th>
+      <th>Jenis Kelamin</th>
+      <th>Tanggal Lahir</th>
+      <th>Jurusan</th>
+      <th>Prodi</th>
+      <th>Berkas</th>
+      <th>Gambar</th>
+      <th>Aksi</th>
+    </tr>
+
+    <tr style="text-align:center;">
+      <?php $i = 1; ?>
+      <?php foreach($pendaftar as $row) : ?>
+      <td><?= $i; ?></td>
+      <td><?= $row['npm']; ?></td>
+      <td><?= $row['nama']; ?></td>
+      <td><?= $row['jenis_kelamin']; ?></td>
+      <td><?= $row['tanggal_lahir']; ?></td>
+      <td><?= $row['jurusan']; ?></td>
+      <td><?= $row['prodi']; ?></td>
+      <td><?= $row['berkas']; ?></td>
+      <td>
+        <img src="image/<?php echo $row["gambar"]; ?>" width="50">
+      </td>
+      <td>
+        <a href="edit.php?npm=<?= $row['npm']; ?>"><button class="btn btn-success">EDIT</button></a>
+        <a href="hapus.php?npm=<?= $row['npm']; ?>"
+        onclick="return confirm('Apakah Anda Yakin Akan Menghapus Data Ini?')" class="btn btn-danger">Hapus</a></td>
+    </tr>
+    <?php $i++; ?>
+    <?php endforeach; ?>
+    </table>
+</body>
+</html>
+
 </body>
 </html>
